@@ -241,26 +241,27 @@ st.sidebar.markdown("#### Powered by Filipe Gatz")
 
 st.title(''' :orange[HungryMap] ''')
 st.markdown("### Taste the world, one map at a time!")
-
-with st.container():
-    st.title('Overall Metrics')
-    col1, col2, col3, col4, col5 = st.columns(5, gap='large')
-    with col1:
-        col1.metric(label='Total Restaurants', value=unique_restaurants, help='Total restaurants registered in our database')
-
-    with col2:
-        col2.metric(label='Countries', value=unique_countries, help='Total countries registered in our database')
+with st.spinner('Loading Data...'):
+    with st.container():
+        st.title('Overall Metrics')
+        col1, col2, col3, col4, col5 = st.columns(5, gap='large')
+        with col1:
+            col1.metric(label='Total Restaurants', value=unique_restaurants, help='Total restaurants registered in our database')
     
-    with col3:
-        col3.metric(label='Total cities', value= unique_cities, help='Total cities registered in our database')
-    with col4:
-        col4.metric(label='Total reviews', value=f"{total_votes:,}", help='Total reviews registered in our database')
-    with col5:
-        col5.metric(label='Culinary diversity', value=total_cuisines, help='Total cuisines registered in our database')
+        with col2:
+            col2.metric(label='Countries', value=unique_countries, help='Total countries registered in our database')
         
-st.markdown("""---""")
+        with col3:
+            col3.metric(label='Total cities', value= unique_cities, help='Total cities registered in our database')
+        with col4:
+            col4.metric(label='Total reviews', value=f"{total_votes:,}", help='Total reviews registered in our database')
+        with col5:
+            col5.metric(label='Culinary diversity', value=total_cuisines, help='Total cuisines registered in our database')
+            
+    st.markdown("""---""")
 
-with st.container():
-    folium_static(map_, width=1920, height=600)
+with st.spinner('Loading Data...'):
+    with st.container():
+        folium_static(map_, width=1920, height=600)
    
    
